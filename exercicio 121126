@@ -1,0 +1,117 @@
+acervo = [
+    {
+        "codigo": 101,
+        "titulo": "Dom Casmurro",
+        "autor": "Machado de Assis",
+        "paginas": 256,
+        "disponivel": True
+    },
+    {
+        "codigo": 102,
+        "titulo": "O Pequeno Príncipe",
+        "autor": "Antoine de Saint-Exupéry",
+        "paginas": 96,
+        "disponivel": True
+    },
+    {
+        "codigo": 103,
+        "titulo": "Harry Potter e a Pedra Filosofal",
+        "autor": "J.K. Rowling",
+        "paginas": 264,
+        "disponivel": False
+    },
+    {
+        "codigo": 104,
+        "titulo": "A Culpa é das Estrelas",
+        "autor": "John Green",
+        "paginas": 288,
+        "disponivel": True
+    }
+]
+
+novo_livro = {
+    "codigo": 105,
+    "titulo": "O Hobbit",
+    "autor": "J.R.R. Tolkien",
+    "paginas": 310,
+    "disponivel": True
+}
+
+
+acervo.append(novo_livro)
+
+print("\n===== LIVROS DISPONÍVEIS COM MAIS DE 250 PÁGINAS =====")
+
+for livro in acervo:
+    if livro["disponivel"] == True and livro["paginas"] > 250:
+        print("Título:", livro["titulo"])
+        print("Autor:", livro["autor"])
+        print("--------------------------------")
+
+
+
+
+print("\n===== BUSCA DO LIVRO CÓDIGO 104 =====")
+
+encontrado = False
+
+for livro in acervo:
+    if livro["codigo"] == 104:
+        encontrado = True
+
+        print("Livro encontrado!")
+        print("Título:", livro["titulo"])
+
+        if livro["disponivel"] == True:
+            print("Situação: Disponível para empréstimo.")
+        else:
+            print("Situação: Emprestado.")
+
+        break
+
+if encontrado == False:
+    print("Código 104 não localizado no acervo.")
+
+
+
+print("\n===== SISTEMA DE EMPRÉSTIMO =====")
+
+codigo_busca = int(input("Digite o código do livro desejado: "))
+
+encontrado = False
+
+for livro in acervo:
+    if livro["codigo"] == codigo_busca:
+        encontrado = True
+
+        if livro["disponivel"] == True:
+            livro["disponivel"] = False
+
+            print("\nEmpréstimo realizado com sucesso!")
+            print("Livro:", livro["titulo"])
+
+        else:
+            print("\nEste livro já está emprestado e indisponível.")
+
+        break
+
+if encontrado == False:
+    print("\nLivro não localizado no acervo.")
+
+
+
+
+print("\n===== ACERVO ATUALIZADO =====")
+
+for livro in acervo:
+    print("\nCódigo:", livro["codigo"])
+    print("Título:", livro["titulo"])
+    print("Autor:", livro["autor"])
+    print("Páginas:", livro["paginas"])
+
+    if livro["disponivel"] == True:
+        print("Status: Disponível")
+    else:
+        print("Status: Emprestado")
+
+    print("--------------------------------")
