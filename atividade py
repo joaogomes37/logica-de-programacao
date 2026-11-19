@@ -1,0 +1,48 @@
+numeros = [2, 5, 8, 12, 16, 23, 38, 45, 56, 67, 72, 81, 89, 94, 99]
+
+
+valor = int(input("Digite o número que deseja procurar: "))
+
+
+inicio = 0
+fim = len(numeros) - 1
+
+comparacoes = 0
+
+posicao = -1
+
+while inicio <= fim:
+
+    # Calcula o ponto médio da região ainda pesquisada.
+    # A divisão inteira "//" é usada para encontrar um índice válido da lista.
+    meio = (inicio + fim) // 2
+
+
+    # Conta um teste do laço a cada verificação realizada no ponto médio.
+    comparacoes += 1
+
+
+    if numeros[meio] == valor:
+        posicao = meio
+        break
+
+
+    # Se o valor procurado é maior, descarta a metade esquerda.
+    # O ponteiro "inicio" passa a apontar para o elemento imediatamente à direita do meio.
+    elif valor > numeros[meio]:
+        inicio = meio + 1
+
+
+    # Caso contrário, o valor é menor e a metade direita é descartada.
+    # O ponteiro "fim" passa a apontar para o elemento imediatamente à esquerda do meio.
+    else:
+        fim = meio - 1
+
+
+if posicao != -1:
+    print(f"Número {valor} encontrado no índice {posicao}.")
+else:
+    print(f"Número {valor} não foi encontrado na lista.")
+
+
+print(f"Total de comparações: {comparacoes}")
